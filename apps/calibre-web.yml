@@ -44,7 +44,7 @@
     - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - '/opt/appdata/{{pgrole}}:/books'
+          - '/mnt/unionfs/ebooks:/books:rw'
           - '/opt/appdata/{{pgrole}}/config:/calibre-web/config'
           - '/etc/localtime:/etc/localtime:ro'
 
@@ -52,8 +52,6 @@
       set_fact:
         pg_env:
           USE_CONFIG_DIR: 'true'
-          SET_CONTAINER_TIMEZONE: 'true'
-          CONTAINER_TIMEZONE: 'Europe/Copenhagen'
           PUID: '1000'
           PGID: '1000'
           
